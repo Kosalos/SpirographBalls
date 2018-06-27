@@ -103,6 +103,8 @@ class ViewController: UIViewController{
         addWidget(); widgets[index].initSingle(&ribbonWidth, 0.01,0.9,0.1, "Ribbon Width")
         addWidget(); widgets[index].initSingle(&ribbonAlpha, 0.01,1,0.1,   "Ribbon alpha")
         addWidget(); widgets[index].initSingle(&sphereAlpha, 0.01,1,0.1,   "Sphere alpha")
+        
+        widgets[0].ident = 1
     }
     
     //MARK: -

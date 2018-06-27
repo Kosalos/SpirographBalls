@@ -208,6 +208,11 @@ class Widget: UIView {
     //MARK:-
     
     func update() -> Bool {
+        
+        if ident == 1 && !touched && (deltaX != 0 || deltaY != 0) {
+            Swift.print(String(format:"?? %8.6f, %8.6f",deltaX,deltaY))
+        }
+
         if valuePointerX == nil || !touched { return false }
         
         let valueX = fClamp2(getValue(0) + deltaX * deltaValue, mRange)
@@ -218,23 +223,6 @@ class Widget: UIView {
 
         setNeedsDisplay()
         return true
-    }
-    
-    //MARK:-
-
-    func focusMovement(_ pt:CGPoint) {
-        if pt.x == 0 { touched = false; return }
-        
-        deltaX =  Float(pt.x) / 1000
-        deltaY = -Float(pt.y) / 1000
-        
-        if !fastEdit {
-            deltaX /= 100
-            deltaY /= 100
-        }
-        
-        touched = true
-        setNeedsDisplay()
     }
     
     //MARK:-
@@ -255,11 +243,23 @@ class Widget: UIView {
             
             touched = true
             setNeedsDisplay()
+            
+//            if ident == 1 {
+//                Swift.print(String(format:"TD %8.6f, %8.6f",deltaX,deltaY))
+//            }
         }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) { touchesBegan(touches, with:event) }
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) { touched = false }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        touched = false
+        deltaX = 0
+        deltaY = 0
+        
+//        if ident == 1 {
+//            Swift.print(String(format:"TU %8.6f, %8.6f",deltaX,deltaY))
+//        }
+    }
 }
 
 func drawLine(_ context:CGContext, _ p1:CGPoint, _ p2:CGPoint) {
