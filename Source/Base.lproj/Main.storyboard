@@ -102,6 +102,7 @@
                         <gestureRecognizers/>
                     </view>
                     <connections>
+                        <outlet property="background" destination="JAq-Ww-bi2" id="llG-xJ-8F7"/>
                         <outlet property="clearButton" destination="zsd-nG-iaH" id="LLi-vv-ieM"/>
                         <outlet property="metalView" destination="vln-H0-HN8" id="SGk-Sj-KLK"/>
                         <outlet property="piButton" destination="oAg-FO-GYM" id="aax-on-fc6"/>

@@ -166,10 +166,10 @@ class Renderer: NSObject, MTKViewDelegate {
             * translate(0,0,translationAmount)
             * arcBall.transformMatrix
 
-        lightpos.x = sinf(lAngle) * 5
-        lightpos.y = 5
-        lightpos.z = cosf(lAngle) * 5
-        lAngle += 0.01
+        lightpos.x = sinf(lAngle)
+        lightpos.y = 0
+        lightpos.z = cosf(lAngle)
+        lAngle += 0.005
         constant_buffer[0].light = normalize(lightpos)
 
         renderEncoder?.setVertexBuffer(constants[constantsIndex], offset:0, index: 1)

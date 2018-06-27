@@ -29,7 +29,8 @@ class ViewController: UIViewController{
     @IBOutlet var skinButton: BorderedButton!
     @IBOutlet var xOnlyButton: BorderedButton!
     @IBOutlet var piButton: BorderedButton!
-
+    @IBOutlet var background: Background!
+    
     @IBAction func clearPressed(_ sender: BorderedButton) { ribbon.reset() }
     @IBAction func resetPressed(_ sender: BorderedButton) { reset() }
 
@@ -137,7 +138,7 @@ class ViewController: UIViewController{
 
         addWidget(); widgets[index].initSingle(&ribbonWidth, 0.01,0.9,0.1, "Ribbon Width")
         addWidget(); widgets[index].initSingle(&ribbonAlpha, 0.01,1,0.1,   "Ribbon alpha")
-        addWidget(); widgets[index].initSingle(&sphereAlpha, 0.01,1,0.1,   "Sphere alpha")
+        addWidget(); widgets[index].initSingle(&sphereAlpha, 0.00,1,0.1,   "Sphere alpha")
         
         widgets[0].ident = 1
     }
@@ -166,8 +167,10 @@ class ViewController: UIViewController{
 
     func render(_ renderEncoder:MTLRenderCommandEncoder) {
         
-        renderEncoder.setFragmentTexture(textures[tIndex1], index:0)
-        for s in spheres { s.render(renderEncoder) }
+        if sphereAlpha > 0 {
+            renderEncoder.setFragmentTexture(textures[tIndex1], index:0)
+            for s in spheres { s.render(renderEncoder) }
+        }
         
         renderEncoder.setFragmentTexture(textures[tIndex2], index:0)
         ribbon.render(renderEncoder) 
@@ -278,6 +281,8 @@ class ViewController: UIViewController{
         arcBall.initialize(Float(hk.size.width),Float(hk.size.height))
         rotateCenter.x = hk.size.width/2
         rotateCenter.y = hk.size.height/2
+        
+        background.createGradientLayer()
     }
     
     //MARK: -

@@ -75,7 +75,7 @@ class Sphere {
     var oldSalpha:Float = 0
 
     func generate() {
-        if fabs(oldSalpha - vc.sphereAlpha) > 0.1 {
+        if fabs(oldSalpha - vc.sphereAlpha) > 0.01 {
             oldSalpha = vc.sphereAlpha
             for i in 0 ..< vData.count { unitSphereVData[i].color = float4(1,1,1,oldSalpha) }
         }
