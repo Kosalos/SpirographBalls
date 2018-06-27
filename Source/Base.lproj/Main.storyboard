@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tXr-a1-R10">
+            <objects>
+                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="SpirographBalls" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9YQ-E1-KKH"/>
+                        <viewControllerLayoutGuide type="bottom" id="yEq-vV-gal"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JAq-Ww-bi2" customClass="Background" customModule="SpirographBalls" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vln-H0-HN8" userLabel="MetalView" customClass="MTKView">
+                                <rect key="frame" x="34" y="20" width="176" height="176"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="0Gu-kH-p6h" appends="YES" id="Vvi-Ed-IEd"/>
+                                    <outletCollection property="gestureRecognizers" destination="S9c-el-hBG" appends="YES" id="8rg-N2-nr5"/>
+                                    <outletCollection property="gestureRecognizers" destination="PWd-9n-7at" appends="YES" id="bT6-6H-JgR"/>
+                                </connections>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zsd-nG-iaH" customClass="BorderedButton" customModule="SpirographBalls" customModuleProvider="target">
+                                <rect key="frame" x="241" y="20" width="94" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.17420818463799914" green="0.17420818463799914" blue="0.17420818463799914" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Clear">
+                                    <color key="titleColor" red="0.81942020939086291" green="0.81942020939086291" blue="0.81942020939086291" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="dmo-DH-rJ6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oG4-eb-Rfy" customClass="BorderedButton" customModule="SpirographBalls" customModuleProvider="target">
+                                <rect key="frame" x="241" y="58" width="94" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.17420818463799914" green="0.17420818463799914" blue="0.17420818463799914" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Reset">
+                                    <color key="titleColor" red="0.81942020939086291" green="0.81942020939086291" blue="0.81942020939086291" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="dIO-Gx-sGW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jra-CA-tK0" customClass="BorderedButton" customModule="SpirographBalls" customModuleProvider="target">
+                                <rect key="frame" x="241" y="96" width="106" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.17420818463799914" green="0.17420818463799914" blue="0.17420818463799914" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Style">
+                                    <color key="titleColor" red="0.81942020939086291" green="0.81942020939086291" blue="0.81942020939086291" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="stylePressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="JVX-do-uWR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Zy-mj-mlp" customClass="BorderedButton" customModule="SpirographBalls" customModuleProvider="target">
+                                <rect key="frame" x="241" y="147" width="106" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.17420818460000001" green="0.17420818460000001" blue="0.17420818460000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Rnd Skin">
+                                    <color key="titleColor" red="0.81942020940000004" green="0.81942020940000004" blue="0.81942020940000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="skinPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="gtZ-kd-vRl"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.21037569732835448" green="0.21037569732835448" blue="0.21037569732835448" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <gestureRecognizers/>
+                    </view>
+                    <connections>
+                        <outlet property="clearButton" destination="zsd-nG-iaH" id="LLi-vv-ieM"/>
+                        <outlet property="metalView" destination="vln-H0-HN8" id="SGk-Sj-KLK"/>
+                        <outlet property="resetButton" destination="oG4-eb-Rfy" id="v3c-Rx-mSF"/>
+                        <outlet property="skinButton" destination="4Zy-mj-mlp" id="jeC-QC-Xqt"/>
+                        <outlet property="styleButton" destination="Jra-CA-tK0" id="I7r-MU-p6M"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+                <pinchGestureRecognizer id="0Gu-kH-p6h">
+                    <connections>
+                        <action selector="pinchGesture:" destination="BV1-FR-VrT" id="rHA-oV-OCf"/>
+                    </connections>
+                </pinchGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="S9c-el-hBG">
+                    <connections>
+                        <action selector="panGesture:" destination="BV1-FR-VrT" id="3qN-i6-brx"/>
+                    </connections>
+                </panGestureRecognizer>
+                <tapGestureRecognizer id="PWd-9n-7at">
+                    <connections>
+                        <action selector="tapGesture:" destination="BV1-FR-VrT" id="MiD-Zg-OF7"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-372.47437774524155" y="-36.328125"/>
+        </scene>
+    </scenes>
+</document>
