@@ -20,21 +20,56 @@ class ViewController: UIViewController{
     var sphereAlpha:Float = 1
     var ribbonAlpha:Float = 1
     var drawStyle:Int = 0
-
+    var xAxisOnly:Bool = false
+    
     @IBOutlet var metalView: MTKView!
     @IBOutlet var clearButton: BorderedButton!
     @IBOutlet var resetButton: BorderedButton!
     @IBOutlet var styleButton: BorderedButton!
     @IBOutlet var skinButton: BorderedButton!
+    @IBOutlet var xOnlyButton: BorderedButton!
+    @IBOutlet var piButton: BorderedButton!
 
     @IBAction func clearPressed(_ sender: BorderedButton) { ribbon.reset() }
     @IBAction func resetPressed(_ sender: BorderedButton) { reset() }
-    
+
+    func restart() {
+        for w in widgets { w.setNeedsDisplay() }
+        ribbon.reset()
+    }
+
+    @IBAction func xOnlyPressed(_ sender: BorderedButton) {
+        xAxisOnly = !xAxisOnly
+        if xAxisOnly {
+            for i in 1 ... numSpheres { spheres[i].rotY = 0;  }
+            restart()
+        }
+    }
+
     @IBAction func stylePressed(_ sender: BorderedButton) {
         drawStyle = 1 - drawStyle
         for i in 0 ... numSpheres { spheres[i].setDrawStyle(drawStyle) }
     }
     
+    @IBAction func piPressed(_ sender: BorderedButton) {
+        func harmonize(_ v:Float) -> Float { // intent is that rotations are increments of pi / 60
+            if v == 0 { return 0 }
+            let v1:Float = Float.pi / 60.0
+            let v2 = Int(v1 * 100000)
+            let v3 = Int(v  * 100000)
+            let v4:Int = Int(v3 / v2) * v2
+            let ans = Float(v4) / 100000.0
+            return ans
+        }
+        
+        for i in 1 ... numSpheres {
+            spheres[i].rotX = harmonize(spheres[i].rotX)
+            spheres[i].rotY = harmonize(spheres[i].rotY)
+        }
+        
+        restart()
+    }
+
     @IBAction func skinPressed(_ sender: BorderedButton) {
         tIndex1 = Int(arc4random() % 7)
         tIndex2 = Int(arc4random() % 7)
@@ -194,7 +229,9 @@ class ViewController: UIViewController{
             clearButton.frame = frame(wxs,bys,gap2,0)
             skinButton.frame = frame(wxs,bys,0,bys+gap)
             x = left
-            resetButton.frame = frame(wxs,bys,0,0)
+            resetButton.frame = frame(wxs,bys,gap2,0)
+            xOnlyButton.frame = frame(wxs/2,bys,wxs/2+5,0)
+            piButton.frame = frame(wxs/2-5,bys,0,0)
         }
         else {      // portrait
             let wxs:CGFloat = 115
@@ -232,7 +269,9 @@ class ViewController: UIViewController{
             clearButton.frame = frame(wxs,bys,gap2,0)
             skinButton.frame = frame(wxs,bys,0,bys+gap)
             x = x2
-            resetButton.frame = frame(wxs,bys,0,0)
+            resetButton.frame = frame(wxs,bys,gap2,0)
+            xOnlyButton.frame = frame(wxs/2,bys,wxs/2+5,0)
+            piButton.frame = frame(wxs/2-5,bys,0,0)
         }
         
         let hk = metalView.bounds

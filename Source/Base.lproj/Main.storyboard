@@ -65,7 +65,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Zy-mj-mlp" customClass="BorderedButton" customModule="SpirographBalls" customModuleProvider="target">
-                                <rect key="frame" x="241" y="147" width="106" height="30"/>
+                                <rect key="frame" x="241" y="148" width="106" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.17420818460000001" green="0.17420818460000001" blue="0.17420818460000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Rnd Skin">
@@ -75,6 +75,28 @@
                                     <action selector="skinPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="gtZ-kd-vRl"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozz-cY-7fO" customClass="BorderedButton" customModule="SpirographBalls" customModuleProvider="target">
+                                <rect key="frame" x="241" y="196" width="106" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.17420818460000001" green="0.17420818460000001" blue="0.17420818460000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Xonly">
+                                    <color key="titleColor" red="0.81942020940000004" green="0.81942020940000004" blue="0.81942020940000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="xOnlyPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="xaW-ap-atw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oAg-FO-GYM" customClass="BorderedButton" customModule="SpirographBalls" customModuleProvider="target">
+                                <rect key="frame" x="241" y="240" width="106" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.17420818460000001" green="0.17420818460000001" blue="0.17420818460000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="pi">
+                                    <color key="titleColor" red="0.81942020940000004" green="0.81942020940000004" blue="0.81942020940000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="piPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="BTS-Wo-Cmn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.21037569732835448" green="0.21037569732835448" blue="0.21037569732835448" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <gestureRecognizers/>
@@ -82,9 +104,11 @@
                     <connections>
                         <outlet property="clearButton" destination="zsd-nG-iaH" id="LLi-vv-ieM"/>
                         <outlet property="metalView" destination="vln-H0-HN8" id="SGk-Sj-KLK"/>
+                        <outlet property="piButton" destination="oAg-FO-GYM" id="aax-on-fc6"/>
                         <outlet property="resetButton" destination="oG4-eb-Rfy" id="v3c-Rx-mSF"/>
                         <outlet property="skinButton" destination="4Zy-mj-mlp" id="jeC-QC-Xqt"/>
                         <outlet property="styleButton" destination="Jra-CA-tK0" id="I7r-MU-p6M"/>
+                        <outlet property="xOnlyButton" destination="ozz-cY-7fO" id="bKZ-jM-FKY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>

@@ -208,18 +208,24 @@ class Widget: UIView {
     //MARK:-
     
     func update() -> Bool {
-        
-        if ident == 1 && !touched && (deltaX != 0 || deltaY != 0) {
-            Swift.print(String(format:"?? %8.6f, %8.6f",deltaX,deltaY))
-        }
 
+        // don't know why the values sometimes 'slowly drift'.  Maybe touch release not detected?.
+        let MINDELTA:Float = 0.005
+        if fabs(deltaX) < MINDELTA && fabs(deltaY) < MINDELTA {
+            deltaX = 0
+            deltaY = 0
+            touched = false
+        }
+        
         if valuePointerX == nil || !touched { return false }
         
         let valueX = fClamp2(getValue(0) + deltaX * deltaValue, mRange)
-        let valueY = fClamp2(getValue(1) + deltaY * deltaValue, mRange)
+        valuePointerX.storeBytes(of:valueX, as:Float.self) 
 
-        if let valuePointerX = valuePointerX { valuePointerX.storeBytes(of:valueX, as:Float.self) }
-        if let valuePointerY = valuePointerY { valuePointerY.storeBytes(of:valueY, as:Float.self) }
+        if !vc.xAxisOnly {
+            let valueY = fClamp2(getValue(1) + deltaY * deltaValue, mRange)
+            if let valuePointerY = valuePointerY { valuePointerY.storeBytes(of:valueY, as:Float.self) }
+        }
 
         setNeedsDisplay()
         return true

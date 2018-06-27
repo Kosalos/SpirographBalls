@@ -80,8 +80,12 @@ class Sphere {
             for i in 0 ..< vData.count { unitSphereVData[i].color = float4(1,1,1,oldSalpha) }
         }
 
+        let size:Int = unitSphereVData.count * MemoryLayout<TVertex>.stride
+
+        if vBuffer == nil { vBuffer = gDevice?.makeBuffer(length:size, options:.storageModeShared) }
+
         if index == 0 {
-            vBuffer = gDevice?.makeBuffer(bytes:unitSphereVData, length:unitSphereVData.count * MemoryLayout<TVertex>.stride, options: MTLResourceOptions())
+            vBuffer?.contents().copyMemory(from:&unitSphereVData, byteCount:size)
             return
         }
         
@@ -100,7 +104,7 @@ class Sphere {
             vData[i].drawStyle = UInt8(vc.drawStyle)
         }
         
-        vBuffer = gDevice?.makeBuffer(bytes:vData, length:vData.count * MemoryLayout<TVertex>.stride, options: MTLResourceOptions())
+        vBuffer?.contents().copyMemory(from:&vData, byteCount:size)
     }
     
     //MARK: -
