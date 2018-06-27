@@ -2,7 +2,7 @@ import UIKit
 import Metal
 
 class Ribbon {
-    let MAX_RIBBON:Int = 2000
+    let MAX_RIBBON:Int = 4000
     var data:[TVertex] = []
     var vertexBuffer: MTLBuffer?
     var index:Int = 0

@@ -112,8 +112,8 @@ class ViewController: UIViewController{
         for w in widgets { _ = w.update() }
         
         // ribbon edge centered on last sphere, along a line that connects it to the previous sphere
-        let base = spheres[numSpheres-2].center // 2nd to last sphere
-        let end = spheres[numSpheres-1].center  // last sphere
+        let base = spheres[numSpheres-1].center // 2nd to last sphere
+        let end = spheres[numSpheres].center  // last sphere
         let diff = end - base
         let p1 = base + diff * (1.0 - ribbonWidth)
         let p2 = base + diff * (1.0 + ribbonWidth)
