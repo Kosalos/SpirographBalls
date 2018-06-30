@@ -39,8 +39,13 @@ class ViewController: UIViewController{
         ribbon.reset()
     }
 
+    let bsOff = UIColor(red:0.25, green:0.25, blue:0.25, alpha: 1)
+    let bsOn  = UIColor(red:0.1, green:0.3, blue:0.1, alpha: 1)
+    
     @IBAction func xOnlyPressed(_ sender: BorderedButton) {
         xAxisOnly = !xAxisOnly
+        xOnlyButton.backgroundColor = xAxisOnly ? bsOn : bsOff
+
         if xAxisOnly {
             for i in 1 ... numSpheres { spheres[i].rotY = 0;  }
             restart()
@@ -136,9 +141,9 @@ class ViewController: UIViewController{
             widgets[index].initSingle(&spheres[i+1].radius, 0.2,4.0,0.5,String(format: "Radius %d",i+1))
         }
 
-        addWidget(); widgets[index].initSingle(&ribbonWidth, 0.01,0.9,0.1, "Ribbon Width")
-        addWidget(); widgets[index].initSingle(&ribbonAlpha, 0.01,1,0.1,   "Ribbon alpha")
-        addWidget(); widgets[index].initSingle(&sphereAlpha, 0.00,1,0.1,   "Sphere alpha")
+        addWidget(); widgets[index].initSingle(&ribbonWidth, 0.01,2,0.1, "Ribbon Width")
+        addWidget(); widgets[index].initSingle(&ribbonAlpha, 0.01,1,0.1, "Ribbon alpha")
+        addWidget(); widgets[index].initSingle(&sphereAlpha, 0.00,1,0.1, "Sphere alpha")
         
         widgets[0].ident = 1
     }

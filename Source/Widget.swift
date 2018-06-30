@@ -208,15 +208,6 @@ class Widget: UIView {
     //MARK:-
     
     func update() -> Bool {
-
-        // don't know why the values sometimes 'slowly drift'.  Maybe touch release not detected?.
-        let MINDELTA:Float = 0.005
-        if fabs(deltaX) < MINDELTA && fabs(deltaY) < MINDELTA {
-            deltaX = 0
-            deltaY = 0
-            touched = false
-        }
-        
         if valuePointerX == nil || !touched { return false }
         
         let valueX = fClamp2(getValue(0) + deltaX * deltaValue, mRange)
@@ -233,6 +224,7 @@ class Widget: UIView {
     
     //MARK:-
     
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) { touchesBegan(touches, with:event) }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if valuePointerX == nil { return }
         
@@ -249,22 +241,14 @@ class Widget: UIView {
             
             touched = true
             setNeedsDisplay()
-            
-//            if ident == 1 {
-//                Swift.print(String(format:"TD %8.6f, %8.6f",deltaX,deltaY))
-//            }
         }
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) { touchesBegan(touches, with:event) }
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) { touchesEnded(touches, with:event) }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         touched = false
         deltaX = 0
         deltaY = 0
-        
-//        if ident == 1 {
-//            Swift.print(String(format:"TU %8.6f, %8.6f",deltaX,deltaY))
-//        }
     }
 }
 
